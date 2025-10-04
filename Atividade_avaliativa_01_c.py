@@ -1,31 +1,69 @@
-#criar calculadora com as 4 operacoes
-print("-----CALCULADORA-----")
-#entrada de dados
-n1 = float(input("Digite o primeiro numero"))
-n2 = float(input("Digite o segundo numero"))
+#c) Crie uma calculadora com as 4 operações matemáticas (Multiplicação, Soma, Subtração e Divisão);
 
-print("\nEscolha a operacao:")
-print("1 - Soma (+)")
-print("2 - Subtracao (-)")
-print("3 - Multiplicacao (*)")
-print("4 - Divisao (/)")
+start_programa = True
+recebe_campos = True
+campos = 1
+while start_programa:
+    while recebe_campos:
+        match campos:
+            case 1:
+                try:
+                    num1 = float(input("Informe o primeiro número: ").replace(",", "."))
+                    campos += 1
+                except:
+                    print("Campo inválido...")
 
-operacao = input ("digite a operacao")
-#processamento
-if operacao =="1":
-resultado + n1 = n2
-print(f"\nresultado: {n1} + {n2} = {resultado}")
-elif operacao == "2":
-resultado = n1 - n2
-print(f"\nResultado: {n1} - {n2} = {resultado}")
-elif operacao == "3":
-resultado = n1 * n2
-print(f"\nResultado: {n1} * {n2} = {resultado}")
-elif operacao == "4"
-if n2 != 0:
-    resultado = n1 / n2
-    print(f"\nResultado: {n1} / {n2} = {resultado}")
+            case 2:
+                try:
+                    print("\n##### INFORME UMA OPERAÇÃO #####\n")
+                    print("Digite X, para Multiplicar")
+                    print("Digite /, para Dividir")
+                    print("Digite +, para Somar")
+                    print("Digite -, para Subtrair\n")
+                    oper = str(input("Informe uma Operação acima: "))
+                    if oper == "x" or oper == "X" or oper == "/" or oper == "+" or oper == "-":
+                        campos += 1
+                    else:
+                        print("Operador inválido...")
+                except:
+                    print("Campo inválido...")
+            case 3:
+                try:
+                    num2 = float(input("Informe o segundo número: ").replace(",", "."))
+                    recebe_campos = False
+                except:
+                    print("Campo inválido...")
+
+    else:
+
+        if oper == "x" or oper == "X":
+            resultado = num1 * num2
+        elif oper == "/":
+            resultado = num1 / num2
+        elif oper == "+":
+            resultado = num1 + num2
+        elif oper == "-":
+            resultado = num1 - num2
+        else:
+            resultado = "Você nao digitou um operador válido!"
+        
+        print("\n>>>>>>>>> RETORNANDO RESULTADO <<<<<<<<<<\n")
+        print("O resultado é ", resultado)
+
+        fim_programa = True
+        while fim_programa:
+            print("\nDeseja finalizar o Programa?\n")
+            try:
+                confirma = str(input("Digite S (SIM) ou N (Calcular Novamente): "))
+                if confirma == "s" or confirma == "S":
+                    fim_programa = False
+                    start_programa = False
+                if confirma == "n" or confirma == "N":
+                    fim_programa = False
+                    recebe_campos = True
+                    campos = 1
+            except:
+                print("Opção inválida...")
+
 else:
-    print("\nErro: Divisao por zero não é permitido")
-else: print("\nOperacao invalida")
-
+    print("\n######### Programa Finalizado ############\n")
